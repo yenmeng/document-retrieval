@@ -38,16 +38,6 @@ def retrieve(args):
     train_querys, train_names = load_data(args.train_dir)
     test_querys, test_names = load_data(args.test_dir)
     
-    # params = [(2.45, 0.5), (2.56, 0.59), (4.46, 0.82)]
-    # dsearcher = SimpleDenseSearcher(
-    # '/home/yenmeng/workdir/IR-Final/pyserini/DPR/dindex-docs-dpr-multi', 'facebook/dpr-question_encoder-multiset-base'
-    # )
-    # ssearcher = SimpleSearcher(args.doc_dir)
-    # ssearcher.set_bm25(2.45, 0.5)
-    # ssearcher.set_rm3(fb_terms=50, fb_docs=50, original_query_weight=0.7, rm3_filter_terms=False)
-    
-    # searcher = HybridSearcher(dsearcher, ssearcher)
-    
     searcher = SimpleSearcher(args.doc_dir)
     searcher.set_bm25(2.45, 0.5)
     searcher.set_rm3(fb_terms=50, fb_docs=50, original_query_weight=0.7)
