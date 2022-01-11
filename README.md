@@ -31,15 +31,38 @@ place `./data` int the root of this repository, the structure of `./data` should
     └── test_query
 ```
 #### step2. preprocess the data (extract xml file)
+run this command to extract the the content from the xml files (this step may take a few minutes) \
+in our baseline, we use  "abstract" for query, and "body" for document
+
+```
+$ bash run_preprocess.sh
+```
+the default input directory is `./data` and the output directory is `./preprocessed_data` \
+(the names and paths can be modified inside `run_preprocess.sh`)
 
 Run Retrieval 
 ---
 
-Dense Retrieval 
+[Sparse Passage Retrieval](https://github.com/castorini/pyserini#how-do-i-index-and-search-my-own-documents) (lucene-bm25) ⟶ our baseline
 ```
-$ bash run_dpr.sh
-```
-Sparse Retrieval (lucene-bm25)
-```
+$ cd sparse_retrieval
 $ bash run_spr.sh
 ```
+`run_spr.sh` includes converting docs/queries to jsonl format, indexing, searching and evaluation.
+
+[Dense Passage Retrieval](https://github.com/castorini/pyserini/blob/master/docs/experiments-dpr.md) (facebookresearch DPR)
+```
+$ cd dense_retrieval
+$ bash run_dpr.sh
+```
+`run_dpr.sh` includes converting docs/queries to jsonl format, indexing, searching and evaluation.
+
+
+Results
+---
+(experiment results can be updated here)
+
+| Model       | mapk@50     | approx run time |
+| ----------- | ----------- | --------------- |
+| SPR (body & summary, bm25(2.45, 0.5), rm3(50, 50, 0.7)) | 0.2111 | 10 min |
+| SPR (body & summary, bm25(4.46, 0.82), rm3(100, 100, 0.7)) | 0.2046 | 10 min |
