@@ -18,6 +18,16 @@ def get_args():
     parser.add_argument('--output_dir', type=str, default='../output')
     
     parser.add_argument('-bs', '--batch_size', type=int, default=32)
+    
+    # bm25 args
+    parser.add_argument('--k1', type=float, default=2.45)
+    parser.add_argument('--b', type=float, default=0.5)
+    
+    #rm3 args
+    parser.add_argument('--use_rm3', action='store_true', default=True)
+    parser.add_argument('--fb_terms', type=int, default=50, help='RM3 parameter for number of expansion terms.')
+    parser.add_argument('--fb_docs', type=int, default=50, help='RM3 parameter for number of expansion documents.')
+    parser.add_argument('--original_query_weight', type=float, default=0.7, help='RM3 parameter for weight to assign to the original query.')
 
     return parser.parse_args()
 
@@ -39,8 +49,9 @@ def retrieve(args):
     test_querys, test_names = load_data(args.test_dir)
     
     searcher = SimpleSearcher(args.doc_dir)
-    searcher.set_bm25(2.45, 0.5)
-    searcher.set_rm3(fb_terms=50, fb_docs=50, original_query_weight=0.7)
+    searcher.set_bm25(k1=args.k1, b=args.b)
+    if args.use_rm3:
+        searcher.set_rm3(fb_terms=args.fb_terms, fb_docs=args.fb_docs, original_query_weight=args.original_query_weight)
        
     output_train = []
     print('====== retrieving train ======')
