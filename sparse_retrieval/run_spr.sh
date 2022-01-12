@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# preprocess
+#preprocess
 python preprocess.py -i ../preprocessed_data -o ./spr_docs
 
-# # encode
+#encode
 python -m pyserini.index -collection JsonCollection \
                          -generator DefaultLuceneDocumentGenerator \
                          -threads 1 \

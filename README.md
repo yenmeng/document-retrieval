@@ -3,6 +3,20 @@ NTU-2021Fall-IR
 
 #### In this project, we utilize the [pyserini toolkit](https://github.com/castorini/pyserini)
 
+File Structure
+---
+```
+document_retrieval
+     ├──sparse_retrieval
+     │    └── ...
+     ├──dense_retrieval
+     │    └── ...
+     ├── eval.py #evaluation on train query
+     ├── preprocess_doc.py #overall preprocess
+     └── run_preprocess.sh #script to run preprocess_doc.py
+ 
+```
+
 Environment Setup
 ---
 create a conda environment
@@ -22,13 +36,14 @@ $ pip install pyserini beautifulsoup4 lxml
 Data Preprocess 
 ---
 #### step1. download the data
-place `./data` int the root of this repository, the structure of `./data` should be as follows:
+place `./data` int the root of this repository, the structure of `./data` should be as follows: 
 ```
-.
-└── data
-    ├── docs
-    ├── train_query
-    └── test_query
+document_retrieval
+     ├── ...
+     └── data
+          ├── docs
+          ├── train_query
+          └── test_query
 ```
 #### step2. preprocess the data (extract xml file)
 run this command to extract the the content from the xml files (this step may take a few minutes) \
