@@ -3,6 +3,22 @@ NTU-2021Fall-IR
 
 #### In this project, we utilize the [pyserini toolkit](https://github.com/castorini/pyserini)
 
+File Structure
+---
+```
+document_retrieval
+     ├──sparse_retrieval
+     │    └── ...
+     ├──dense_retrieval
+     │    └── ...
+     ├── data #downloaded (include doc & query)
+     │    └── ...
+     ├── eval.py #evaluation on train query
+     ├── preprocess_doc.py #overall preprocess
+     └── run_preprocess.sh #script to run preprocess_doc.py
+ 
+```
+
 Environment Setup
 ---
 create a conda environment
