@@ -16,7 +16,7 @@ $ conda install -c conda-forge openjdk=11
 $ conda install -c conda-forge pyjnius 
 $ conda install faiss-cpu -c pytorch
 $ conda install pytorch torchvision torchaudio -c pytorch
-$ pip install pyserini
+$ pip install pyserini beautifulsoup4 lxml
 ```
 
 Data Preprocess 
