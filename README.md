@@ -11,8 +11,6 @@ document_retrieval
      │    └── ...
      ├──dense_retrieval
      │    └── ...
-     ├── data #downloaded (include doc & query)
-     │    └── ...
      ├── eval.py #evaluation on train query
      ├── preprocess_doc.py #overall preprocess
      └── run_preprocess.sh #script to run preprocess_doc.py
@@ -38,13 +36,14 @@ $ pip install pyserini beautifulsoup4 lxml
 Data Preprocess 
 ---
 #### step1. download the data
-place `./data` int the root of this repository, the structure of `./data` should be as follows:
+place `./data` int the root of this repository, the structure of `./data` should be as follows: 
 ```
-.
-└── data
-    ├── docs
-    ├── train_query
-    └── test_query
+document_retrieval
+     ├── ...
+     └── data
+          ├── docs
+          ├── train_query
+          └── test_query
 ```
 #### step2. preprocess the data (extract xml file)
 run this command to extract the the content from the xml files (this step may take a few minutes) \
